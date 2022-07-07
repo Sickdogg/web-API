@@ -15,7 +15,7 @@ form.addEventListener('submit', e => e.preventDefault());
 // run function when the 'Say hello' button is clicked
 submitBtn.addEventListener('click', () => {
   // store the entered name in web storage
-  localStorage.setItem('name', nameInput.value);
+  localStorage.setItem('name',nameInput.value);
   // run nameDisplayCheck() to sort out displaying the personalised greetings and updating the form display
   nameDisplayCheck();
 });
@@ -33,19 +33,17 @@ function nameDisplayCheck() {
   // check whether the 'name' data item is stored in web Storage
   if(localStorage.getItem('name')) {
     // If it is, display personalized greeting
-    const name = localStorage.getItem('name');
-    h1.textContent = `Welcome, ${name}`;
-    personalGreeting.textContent = `Welcome to our website, ${name}! We hope you have fun while you are here.`;
+    const names = localStorage.getItem('name');
+    personalGreeting.innerHTML = `歡迎${names}`;
     // hide the 'remember' part of the form and show the 'forget' part
-    forgetDiv.style.display = 'block';
-    rememberDiv.style.display = 'none';
+    forgetDiv.style.display = "block";
+    rememberDiv.style.display = "none";
   } else {
     // if not, display generic greeting
-    h1.textContent = 'Welcome to our website ';
-    personalGreeting.textContent = 'Welcome to our website. We hope you have fun while you are here.';
+    personalGreeting.innerHTML = `歡迎陌生人`;
     // hide the 'forget' part of the form and show the 'remember' part
-    forgetDiv.style.display = 'none';
-    rememberDiv.style.display = 'block';
+    forgetDiv.style.display = "none";
+    rememberDiv.style.display = "block";
   }
 }
 
